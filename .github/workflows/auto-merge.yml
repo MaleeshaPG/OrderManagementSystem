@@ -42,7 +42,8 @@ jobs:
 
           git merge origin/development --no-edit
 
-          git push origin qa
+          git push https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git qa
+ 
  
   merge-main:
 
@@ -70,5 +71,5 @@ jobs:
 
           git merge origin/qa --no-edit
 
-          git push origin main
+          git push https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git main
  
