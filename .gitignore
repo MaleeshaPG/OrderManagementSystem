@@ -6,6 +6,7 @@ publish/
 
 # Visual Studio / VS Code
 .vs/
+.vs/**
 .vscode/
 *.suo
 *.user
