@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>febef032-6901-4170-b99c-0a7018749d2c</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+    <OutputPath>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- Removed explicit Microsoft.OpenApi reference; Swashbuckle provides the OpenAPI models transitively -->
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\ServiceInterfaces\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <!-- Exclude test project sources and content if test project is placed under the same folder -->
+  <ItemGroup>
+    <Compile Remove="OrderManagementSystem.Tests\**\*.cs" />
+    <None Remove="OrderManagementSystem.Tests\**\*" />
+    <Content Remove="OrderManagementSystem.Tests\**\*" />
+    <EmbeddedResource Remove="OrderManagementSystem.Tests\**\*" />
+  </ItemGroup>
+
+</Project>
